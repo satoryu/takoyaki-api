@@ -16,6 +16,10 @@ module.exports = async function (context, req) {
         context.done()
     } catch(err) {
         context.log.error(err)
+        context.bindings.res = {
+            status: 500,
+            body: err
+        }
         context.done(err)
     }
 };
