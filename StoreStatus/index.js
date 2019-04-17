@@ -9,6 +9,7 @@ module.exports = async function (context, storedStatus) {
     context.bindings.statusByUser = {
         PartitionKey: storedStatus.user.screen_name,
         RowKey: invertTime,
+        Id: storedStatus.id_str,
         Text: storedStatus.text
     }
 };
