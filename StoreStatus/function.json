@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "name": "storedStatus",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "store-status"
+    },
+    {
+      "type": "blob",
+      "name": "statusResponse",
+      "direction": "out",
+      "path": "status-responses/{id}.json"
+    },
+    {
+      "type": "table",
+      "direction": "out",
+      "name": "statusByUser",
+      "tableName": "StatusesByUser"
+    }
+  ]
+}

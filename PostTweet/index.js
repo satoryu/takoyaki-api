@@ -10,8 +10,9 @@ module.exports = async function (context, req) {
     })
 
     try {
-        const tweet = await twitter.post('statuses/update', { status })
-        context.bindings.res = { body: tweet }
+        const statusResponse = await twitter.post('statuses/update', { status })
+        context.bindings.res = { body: statusResponse }
+        context.bindings.storedStatus = statusResponse
 
         context.done()
     } catch(err) {
