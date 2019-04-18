@@ -1,0 +1,26 @@
+{
+  "bindings": [
+    {
+      "authLevel": "admin",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "table",
+      "direction": "in",
+      "name": "tweets",
+      "tableName": "StatusesByUser",
+      "partitionKey": "{name}",
+      "take": "30"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

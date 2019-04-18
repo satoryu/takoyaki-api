@@ -10,6 +10,7 @@ module.exports = async function (context, storedStatus) {
         PartitionKey: storedStatus.user.screen_name,
         RowKey: invertTime,
         Id: storedStatus.id_str,
-        Text: storedStatus.text
+        Text: storedStatus.text,
+        CreatedAt: new Date(storedStatus.created_at)
     }
 };
