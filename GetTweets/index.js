@@ -10,6 +10,14 @@ module.exports = async function (context, req) {
     }
 
     const loadedData = context.bindings.tweets
+    if (loadedData.length == 0) {
+        context.bindings.res = {
+            status: 404
+        }
+        context.done()
+        return
+    }
+
     const tweets = loadedData.map((data) => {
         return {
             id: data.Id,

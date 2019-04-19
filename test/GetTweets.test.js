@@ -6,7 +6,7 @@ describe('GetTweets', () => {
             bindings: {
                 res: {}
             },
-            done() {}
+            done: jest.fn().mockReturnThis()
         }
         const req = {
             headers: { 'x-ms-client-principal-name': null }
@@ -14,5 +14,21 @@ describe('GetTweets', () => {
 
         await func(context, req)
         expect(context.bindings.res.status).toBe(401)
+    })
+
+    it('should return 404 if no tweets exists for a given user name', async () => {
+        const context = {
+            bindings: {
+                tweets: [],
+                res: {}
+            },
+            done: jest.fn().mockReturnThis()
+        }
+        const req = {
+            headers: { 'x-ms-client-principal-name': 'SU-METAL' }
+        }
+
+        await func(context, req)
+        expect(context.bindings.res.status).toBe(404)
     })
 })
