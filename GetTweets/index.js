@@ -23,11 +23,11 @@ module.exports = async function (context, req) {
             id: data.Id,
             text: data.Text,
             name: data.PartitionKey,
-            created_at: data.CreatedAt
+            created_at: new Date(data.CreatedAt)
         }
     })
 
-    context.res = {
+    context.bindings.res = {
         status: 200,
         body: tweets
     }
