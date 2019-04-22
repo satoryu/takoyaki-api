@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 10.14.1
+
+cache: npm
+
+script: npm run-script coverage
+
+notifications:
+  email: false
