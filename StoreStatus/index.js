@@ -13,4 +13,5 @@ module.exports = async function (context, storedStatus) {
         Text: storedStatus.text,
         CreatedAt: new Date(storedStatus.created_at)
     }
+    context.done()
 };
